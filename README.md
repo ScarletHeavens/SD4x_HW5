@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+In this assignment, I have developed a simple application to track lists of items using React.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I have used the html and css from the course, however I decided to rewrite Class components to React.hooks, as I believe this is the direction React is headed to. 
+The final list tracker should look like this: 
 
-## Available Scripts
 
-In the project directory, you can run:
+<img width="763" alt="Screenshot 2021-11-29 at 13 39 43" src="https://user-images.githubusercontent.com/87530494/143893773-b9828c3f-62c0-40ce-9e05-bcfc157f4e4c.png">
 
-### `npm start`
+The goal of the assignment was to modify the code provided so that the user can:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Create a new list
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Add items to that list
 
-### `npm test`
+Mark items by changing their color
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The code has following components:
+AddList, which is responsible for taking user input and passing information back to the App component in order to create a new list
 
-### `npm run build`
+Lists, which is empty when the App is first rendered, but contains all instances of individual List components, each of which contains an AddItem component for adding items and ListItem components for all items in the list
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Each component is implemented in a separate file, which has the same name as the component.
+The App component render two child components: AddList and Lists. The AddList component contains the text input field next to the words “What will be on your next list?” and a button labeled “Create List”. The Lists component by default reads “Add new lists to get started!”, but will eventually display each individual List component, which consists of an AddItem component and ListItem components.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+When the user types the name of a new list into the input field of the AddList component and clicks the “Create List” button, the AddList component should call the AddList.handleSubmit function, which should then update its state and then use the App.handleAddList function to update the state of the App (specifically, the “lists” and “items” variables in the state, as described in the code comments and according to the example below).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The App should then re-render, and with the App’s state now containing a new list, the App should pass the necessary information from its state to the Lists component, which will render a new List component representing a single list.
 
-### `npm run eject`
+The AddItem.handleSubmit and App.handleAddItem functions and modify the components as necessary so that it is possible for the user to use the AddItem component to add an item to a list and see the ListItem component rendered in the page. In particular, the app should behave as follows:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When the user enters a value in the input field of the AddItem component and clicks the “Submit” button, the AddItem component should call the AddItem.handleSubmit function, which should update the component’s state and then use the App.handleAddItem function to update the state of the App (specifically, the “items” variable in the state, as described in the code comments and according to the example below).
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The App should then re-render. It should pass the necessary information from its state to the Lists component, which will then pass it to its List components, which can then render each ListItem with the appropriate values.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Finally, the ListItem.handleClick function: when the user clicks on the content in the ListItem, i.e., within the <span> element. The function should alternate the color of the text in the ListItem between black and gray.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
